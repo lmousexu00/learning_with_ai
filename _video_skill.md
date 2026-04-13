@@ -66,9 +66,24 @@ frames[0].save('gif_xxx.gif', save_all=True, append_images=frames[1:],
 
 ---
 
-### Step 3：录音
+### Step 3：录音（TTS 自动生成）
 
-用手机或麦克风录制 MP3，放入 `NNN_video/` 目录。
+用 `tts.py` 调用 MiniMax speech-2.8-turbo 自动生成 MP3：
+
+```bash
+# 从 narration.txt 生成录音
+python3 tts.py NNN_video/narration.txt NNN_video/narration.mp3
+
+# 指定音色和语速
+python3 tts.py NNN_video/narration.txt NNN_video/narration.mp3 male-qn-jingying 1.0
+```
+
+**可选音色：**
+- `male-qn-jingying`（精英青年，默认，科普内容推荐）
+- `male-qn-qingse`（清涩青年，偏年轻）
+- `Chinese (Mandarin)_Gentle_Youth`（温润青年，柔和）
+
+脚本位置：`tts.py`（项目根目录）。文本超过 5000 字时自动分段合并（需 ffmpeg）。
 
 ---
 
